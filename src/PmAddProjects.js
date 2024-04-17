@@ -63,6 +63,8 @@ function PmAddProjects() {
       });
   };
 
+  console.log(value);
+
   return (
     <div>
       <PmNav />

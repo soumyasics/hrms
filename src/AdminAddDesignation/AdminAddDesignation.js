@@ -58,13 +58,25 @@ function AdminAddDesignation() {
               <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                   <div className="col-6">
-                    <input
-                      type="text"
-                      className="form-control bg-light border-0 px-4"
-                      placeholder="Job Title"
+                    <select
+                      className="form-select bg-light border-0 px-4"
                       style={{ height: "55px" }}
                       value={values.title} onChange={handleChange} onBlur={handleBlur} id='title'
-                    />
+                    >
+                      <option value="">Select Job Title</option>
+                      <option value="HR">HR</option>
+                      <option value="Project Manager">Project Manager</option>
+                      <option value="Software Developer">Software Developer</option>
+                      <option value="Web Developer">Web Developer</option>
+                      <option value="Database Administrator">Database Administrator</option>
+                      <option value="Network Administrator">Network Administrator</option>
+                      <option value="System Analyst">System Analyst</option>
+                      <option value="Quality Assurance Engineer">Quality Assurance Engineer</option>
+                      <option value="UI/UX Designer">UI/UX Designer</option>
+                      <option value="Technical Support Engineer">Technical Support Engineer</option>
+                      <option value="DevOps Engineer">DevOps Engineer</option>
+                      <option value="IT Consultant">IT Consultant</option>
+                    </select>
                     {errors.title && touched.title && (<p className="err">{errors.title}</p>)}
 
                   </div>

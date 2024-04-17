@@ -18,9 +18,13 @@ function AdminViewDesig() {
     useEffect(()=>{
         axiosInstance.post("/viewallDesignationforAdmin")
         .then((response)=>{
-            console.log(response.data.data);
-            console.log(response.data.data);
-            setArray(response.data.data)
+            if(response.data.msg=='No Data obtained '){
+                setArray([])
+
+            }else if(response.data.status==200){
+                setArray(response.data.data)
+
+            }
         })
         .catch((err)=>{
             console.log(err);
@@ -56,7 +60,8 @@ function AdminViewDesig() {
                         {/* <a href="">Show All</a> */}
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        {
+                            array.length?<table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">Designation Name</th>
@@ -82,7 +87,9 @@ function AdminViewDesig() {
                                     })
                                 }                                                             
                             </tbody>
-                        </table>
+                        </table>:<h1 style={{textAlign:'center',padding:'25px'}} >No Designation found</h1>
+                        }
+                        
                     </div>
                 </div>
             </div>    

@@ -1628,3 +1628,10 @@ h6 {
   background: transparent;
   color: #666666;
 }
+/* Add this CSS to your stylesheet */
+/* Add this CSS to your stylesheet */
+.react-select__multi-value__remove-all {
+  display: none !important; /* Hide the clear all icon */
+}
+
+

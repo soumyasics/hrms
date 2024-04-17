@@ -18,8 +18,14 @@ function AdminViewAppcnt() {
     useEffect(()=>{
         axiosInstance.post("/viewApplicants")
         .then((response)=>{
+            if(response.data.msg=='No Data obtained '){
+                setArray([])
+
+            }else if(response.data.status==200){
+                setArray(response.data.data)
+
+            }
             console.log(response);
-            setArray(response.data.data)
         })
         .catch((err)=>{
             console.log(err);
@@ -55,7 +61,8 @@ function AdminViewAppcnt() {
                         {/* <a href="">Show All</a> */}
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        {
+                            array.length?<table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">Name</th>
@@ -78,19 +85,20 @@ function AdminViewAppcnt() {
                                             <td>{a.qualification}</td>
                                             <td>{a.skills+' '}</td>
                                             <td>{a.language+' '}</td>
-                                            {/* <td>{a.designationid.title}</td>
-                                            <td>{a.dateofjoin.slice(0,10)}</td> */}
+                                           
                                             <td><button class="btn btn-sm btn-danger" onClick={() => handleRemove(a._id)} >Remove</button></td>                                        </tr>
 
                                         )
                                        
 
-                                    }):<h1 style={{textAlign:'center',padding:'25px'}} >No Employee found</h1>
+                                    }):<h1 style={{textAlign:'center',padding:'25px'}} >No Applicant found</h1>
                                 }
                                 
                                 
                             </tbody>
-                        </table>
+                        </table>:<h1 style={{textAlign:'center',padding:'25px'}} >No Applicant found</h1>
+                        }
+                        
                     </div>
                 </div>
             </div>

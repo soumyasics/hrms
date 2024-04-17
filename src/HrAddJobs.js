@@ -15,8 +15,7 @@ function HrAddJobs() {
   
     const navigate = useNavigate();
   
-    const onSubmit = (e) => {
-      e.preventDefault();
+    const onSubmit = () => {
       values.skills = skill;
       values.qualification = qualification;
       console.log('iii',values);
@@ -28,6 +27,7 @@ function HrAddJobs() {
           if (res.data.status == 200) {
             // alert("Registration Successful")
             toast.success("Job added");
+            window.location.reload(false)
             // navigate("/applicant-login");
           } else {
             setEr(res.data.msg);
@@ -68,7 +68,7 @@ function HrAddJobs() {
           </div>
           <div className="row gx-5">
             <div className="col-lg-12" style={{ paddingTop: "2rem" }}>
-              <form onSubmit={onSubmit}>
+              <form onSubmit={(e)=>{handleSubmit(e)}}>
                 <div className="row g-3">
                   <div className="col-6">
                     <input

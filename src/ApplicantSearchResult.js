@@ -36,8 +36,10 @@ function ApplicantSearchResult() {
       .then((res) => {
         console.log(res);
         if (res.data.status == 200) {
-          alert("Applied");
+          toast.success("Applied");
           // setArray(prevArray => prevArray.filter(item => item._id !== id));
+        }else if(res.data.status==409){
+          toast.warning(res.data.msg)
         }
       })
       .catch((err) => {
